@@ -9,9 +9,9 @@
 import UIKit
 
 /// A view class that supports updating constraints automatically depending on what orientation the view is in
-public class JSVMultiOrientaionView: UIView {
+open class JSVMultiOrientaionView: UIView {
     /// The constraints that will be active in landscape mode
-    public var landscapeConstraints: [NSLayoutConstraint] {
+    open var landscapeConstraints: [NSLayoutConstraint] {
         get {
             return lConstraints
         }
@@ -22,7 +22,7 @@ public class JSVMultiOrientaionView: UIView {
         }
     }
     /// The constraints that will be active in portrait mode
-    public var portraitContraints: [NSLayoutConstraint] {
+    open var portraitContraints: [NSLayoutConstraint] {
         get {
             return pConstraints
         }
@@ -64,7 +64,7 @@ public class JSVMultiOrientaionView: UIView {
     
     /// Updates the contraints to activate the portrait constraints if in portrait, otherwise activate the landscape constraints.
     /// Make sure to call this method after the
-    @objc public func updateLayoutConstraints() {
+    @objc open func updateLayoutConstraints() {
         let orientation = UIDevice.current.orientation
 
         switch orientation {
