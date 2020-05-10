@@ -8,8 +8,8 @@
 import Foundation
 
 infix operator **
-extension Float {
-    static func ** (left: Float, right: Float) -> Float {
+public extension Float {
+    public static func ** (left: Float, right: Float) -> Float {
         return pow(left, right)
     }
 }
