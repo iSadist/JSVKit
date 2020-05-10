@@ -1,6 +1,7 @@
 import UIKit
 
 /// A table view component that connects an observable itself so that the value of the observable and the visible value on the table cell always agrees
+@available(iOS 11.0, *)
 public class JSVTextTableViewCell: UITableViewCell, UITextFieldDelegate {
     public var title = UILabel()
     public var textField = JSVTextField()

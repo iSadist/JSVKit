@@ -51,6 +51,12 @@ extension SCNVector3 {
         return SCNVector3(self.x - x, self.y - y, self.z - z)
     }
     
+    func subtract(other: SCNVector3) -> SCNVector3 {
+        return SCNVector3(x: self.x - other.x,
+                          y: self.y - other.y,
+                          z: self.z - other.z)
+    }
+    
     /// Converts the vector to Simd and returns it
     public func toSimd() -> vector_float3 {
         return vector_float3(x: self.x, y: self.y, z: self.z)

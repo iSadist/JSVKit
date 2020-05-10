@@ -1,6 +1,7 @@
 import UIKit
 
 /// A Slider component that contains the slider, a title and the current value of the slider
+@available(iOS 9.0, *)
 public class JSVSlider: UIControl {
 
     /// The title of the slider. Usually a short description of

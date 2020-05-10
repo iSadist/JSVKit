@@ -29,6 +29,7 @@ public protocol JSVPlayable {
 }
 
 /// An audio player that can play various sounds at the same time.
+@available(iOS 10.0, *)
 public class JSVAudioPlayer: NSObject, JSVPlayable {
     fileprivate var audio: [String : AVAudioPlayer]
     static let instance = JSVAudioPlayer()

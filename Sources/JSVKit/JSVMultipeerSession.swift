@@ -13,7 +13,7 @@ public class JSVMultipeerSession: NSObject {
     private let receivedData: (Data, MCPeerID) -> Void
     private let nearbyPeersChanged: ([MCPeerID]) -> Void
     
-    init(_ peerID: MCPeerID, connectedUserChanged: @escaping (MCPeerID?) -> Void, receivedData: @escaping (Data, MCPeerID) -> Void, nearbyPeersChanged: @escaping ([MCPeerID]) -> Void) {
+    init(_ peerID: MCPeerID, serviceType: String, connectedUserChanged: @escaping (MCPeerID?) -> Void, receivedData: @escaping (Data, MCPeerID) -> Void, nearbyPeersChanged: @escaping ([MCPeerID]) -> Void) {
         self.connectedUserChanged = connectedUserChanged
         self.receivedData = receivedData
         self.nearbyPeersChanged = nearbyPeersChanged

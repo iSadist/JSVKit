@@ -1,6 +1,7 @@
 import UIKit
 
 /// A table view cell with a bool switch value that can be connected to an observable
+@available(iOS 11.0, *)
 public class JSVSwitchTableViewCell: UITableViewCell {
     public var switchButton = JSVBoundSwitch()
 

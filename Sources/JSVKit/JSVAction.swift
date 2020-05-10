@@ -20,7 +20,7 @@ internal class JSVAction: NSObject, NSSecureCoding {
     ///   - controller: The controller to be executed in
     ///   - callerID: The ID of the caller of the action
     ///   - completionHandler: A completion handler to be executed after the action has completed
-    internal func execute(in controller: ARSceneViewController, callerID: String? = nil, completionHandler: (() -> Void)?) {
+    internal func execute(in controller: UIViewController, callerID: String? = nil, completionHandler: (() -> Void)?) {
         fatalError("Execute function has not been implemented!")
     }
 }

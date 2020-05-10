@@ -1,6 +1,7 @@
 import UIKit
 
 /// A table view component that contains an editable image and can be connected to an observable so that the value of the observable and the visible value on the table cell always agrees
+@available(iOS 11.0, *)
 public class JSVEditableImageTableViewCell: UITableViewCell {
     public weak var viewController: UIViewController?
     private lazy var imagePicker = UIImagePickerController()
@@ -67,6 +68,7 @@ public class JSVEditableImageTableViewCell: UITableViewCell {
     }
 }
 
+@available(iOS 11.0, *)
 extension JSVEditableImageTableViewCell: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let croppedImage = info[.editedImage] as? UIImage {

@@ -5,6 +5,7 @@ protocol Purchasing {
     
 }
 
+@available(iOS 13.0, *)
 public class JSVInAppPurchaseClient: NSObject, Purchasing {
     private let purchasedProductsKey = "in-app-purchase_products"
 
@@ -68,12 +69,14 @@ public class JSVInAppPurchaseClient: NSObject, Purchasing {
     }
 }
 
+@available(iOS 13.0, *)
 extension JSVInAppPurchaseClient: SKPaymentQueueDelegate {
     public func paymentQueue(_ paymentQueue: SKPaymentQueue, shouldContinue transaction: SKPaymentTransaction, in newStorefront: SKStorefront) -> Bool {
         return true
     }
 }
 
+@available(iOS 13.0, *)
 extension JSVInAppPurchaseClient: SKProductsRequestDelegate {
     public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
         #if DEBUG
@@ -96,6 +99,7 @@ extension JSVInAppPurchaseClient: SKProductsRequestDelegate {
     }
 }
 
+@available(iOS 13.0, *)
 extension JSVInAppPurchaseClient: SKPaymentTransactionObserver {
     public func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
         for transaction in transactions where transaction.transactionState == .purchased ||

@@ -1,6 +1,7 @@
 import UIKit
 
 ///
+@available(iOS 11.0, *)
 public class JSVSliderTableViewCell: UITableViewCell {
     /// The title on the cell
     public var title = UILabel()

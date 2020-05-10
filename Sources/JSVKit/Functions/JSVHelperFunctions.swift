@@ -15,6 +15,7 @@ extension CGFloat: Boundable {}
 // MARK: ARKit
 
 /// A class used to handle gesture events to move scene kit nodes
+@available(iOS 11.0, *)
 public class JSVNodeMover {
     private var panStartZ: CGFloat?
     private var panStartPosition: CGPoint?

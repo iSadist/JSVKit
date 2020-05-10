@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 11.0, *)
 public class JSVStepperTableViewCell: UITableViewCell {
     /// The title on the cell
     public var title = UILabel()

@@ -8,6 +8,7 @@
 
 import UIKit
 
+@available(iOS 9.0, *)
 public class JSVButtonTableViewCell: UITableViewCell {
 
     var buttonText: String? {
