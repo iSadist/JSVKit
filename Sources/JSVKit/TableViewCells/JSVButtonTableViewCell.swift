@@ -11,7 +11,7 @@ import UIKit
 @available(iOS 9.0, *)
 public class JSVButtonTableViewCell: UITableViewCell {
 
-    var buttonText: String? {
+    public var buttonText: String? {
         get {
             return button.title(for: .normal)
         }
@@ -19,7 +19,8 @@ public class JSVButtonTableViewCell: UITableViewCell {
             button.setTitle(newValue, for: .normal)
         }
     }
-    var onButtonPressed: (() -> Void)?
+
+    public var onButtonPressed: (() -> Void)?
     
     fileprivate var button = UIButton(type: .system)
     
@@ -37,7 +38,7 @@ public class JSVButtonTableViewCell: UITableViewCell {
         setupSubviews()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

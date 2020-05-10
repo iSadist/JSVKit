@@ -32,7 +32,7 @@ public protocol JSVPlayable {
 @available(iOS 10.0, *)
 public class JSVAudioPlayer: NSObject, JSVPlayable {
     fileprivate var audio: [String : AVAudioPlayer]
-    static let instance = JSVAudioPlayer()
+    public static let instance = JSVAudioPlayer()
     
     /// Creates the audio player with all sounds available from the Sound enum
     override init() {
