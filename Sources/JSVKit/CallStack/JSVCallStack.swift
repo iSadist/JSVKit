@@ -21,7 +21,7 @@ public class JSVCallStack {
         }
     }
 
-    func jobWasFinished() {
+    public func jobWasFinished() {
         nbrJobsRunning -= 1
         if !stack.isEmpty {
             let job = stack.removeFirst()
