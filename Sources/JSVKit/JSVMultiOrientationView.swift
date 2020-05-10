@@ -36,7 +36,7 @@ public class JSVMultiOrientaionView: UIView {
     private var lConstraints = [NSLayoutConstraint]()
     private var pConstraints = [NSLayoutConstraint]()
 
-    init() {
+    public init() {
         super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
         
         NotificationCenter.default.addObserver(
@@ -47,7 +47,7 @@ public class JSVMultiOrientaionView: UIView {
         )
     }
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         
         NotificationCenter.default.addObserver(
@@ -58,7 +58,7 @@ public class JSVMultiOrientaionView: UIView {
         )
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -81,7 +81,7 @@ public class JSVMultiOrientaionView: UIView {
         layoutIfNeeded()
     }
     
-    deinit {
+    public deinit {
         NotificationCenter.default.removeObserver(
             self,
             name: UIDevice.orientationDidChangeNotification,
