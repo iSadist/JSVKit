@@ -7,13 +7,13 @@
 
 import UIKit
 
-protocol Storyboarded {
+public protocol Storyboarded {
     /// Create the view controller from the storyboard "Main" where the view controller has the
     /// same name as the class
     static func instantiate() -> Self
 }
 
-extension Storyboarded where Self: UIViewController {
+public extension Storyboarded where Self: UIViewController {
     static func instantiate() -> Self {
         let fullName = NSStringFromClass(self)
         let className = fullName.components(separatedBy: ".")[1]

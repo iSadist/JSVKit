@@ -12,7 +12,7 @@ open class JSVAction: NSObject, NSSecureCoding {
     open func encode(with aCoder: NSCoder) {
     }
 
-    required open init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
     }
     
     /// Execute the action in a ARSceneViewController
