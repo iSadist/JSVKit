@@ -18,7 +18,7 @@ public class JSVInAppPurchaseClient: NSObject, Purchasing {
     public var paymentCallback: (([SKProduct]) -> Void)?
     public var productsCallback: (([SKProduct]) -> Void)?
 
-    override init() {
+    override public init() {
         paymentQueue = SKPaymentQueue.default()
         products = []
         purchasedProducts = []
