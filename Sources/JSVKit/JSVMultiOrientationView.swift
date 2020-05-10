@@ -81,7 +81,7 @@ public class JSVMultiOrientaionView: UIView {
         layoutIfNeeded()
     }
     
-    public deinit {
+    deinit {
         NotificationCenter.default.removeObserver(
             self,
             name: UIDevice.orientationDidChangeNotification,
