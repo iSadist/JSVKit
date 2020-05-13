@@ -7,11 +7,6 @@ public class JSVMultipeerSession: NSObject {
     
     public var isMaster = false
     public var viewController: UIViewController?
-    public var connectedPeers: [MCPeerID] {
-        get {
-            return session.connectedPeers
-        }
-    }
 
     private let connectedUserChanged: (MCPeerID?) -> Void
     private let receivedData: (Data, MCPeerID) -> Void
