@@ -7,10 +7,15 @@ public class JSVMultipeerSession: NSObject {
     
     public var isMaster = false
     public var viewController: UIViewController?
-    private var nearbyPeers: Set<MCPeerID> = Set<MCPeerID>()
+    public var connectedPeers: [MCPeerID] {
+        get {
+            return session.connectedPeers
+        }
+    }
 
     private let connectedUserChanged: (MCPeerID?) -> Void
     private let receivedData: (Data, MCPeerID) -> Void
+    private var nearbyPeers: Set<MCPeerID> = Set<MCPeerID>()
     private let nearbyPeersChanged: ([MCPeerID]) -> Void
     
     public init(_ peerID: MCPeerID, serviceType: String, connectedUserChanged: @escaping (MCPeerID?) -> Void, receivedData: @escaping (Data, MCPeerID) -> Void, nearbyPeersChanged: @escaping ([MCPeerID]) -> Void) {
