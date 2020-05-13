@@ -40,11 +40,15 @@ public class JSVMultipeerSession: NSObject {
         isMaster = true
         serviceBrowser.invitePeer(peer, to: session, withContext: nil, timeout: 15)
     }
-
-    public func sendData(_ data: Data) {
+    
+    /// Send some data to the connected peer. If no peer is connected nothing will be sent.
+    /// - Parameters:
+    ///   - data: The data to be sent
+    ///   - priority: Choose to send the data with either a reliable connection or an unreliable one. An unreliable connection cannot guarantee the order or that the package will arrive.
+    public func sendData(_ data: Data, priority: Bool = true) {
         if let connectedPeer = session.connectedPeers.first {
             do {
-                try session.send(data, toPeers: [connectedPeer], with: .reliable)
+                try session.send(data, toPeers: [connectedPeer], with: priority ? .reliable : .unreliable)
             } catch {
                 #if DEBUG
                 print("Failed to send data to \(connectedPeer.displayName). Error: \(error)")
