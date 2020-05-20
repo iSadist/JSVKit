@@ -30,6 +30,10 @@ public struct WritableBitStream {
         endBitIndex = bytes.count * 8
     }
     
+    mutating public func appendBool(_ value: Bool) {
+        appendBit(UInt8(value ? 1 : 0))
+    }
+    
     mutating public func appendUInt32(_ value: UInt32) {
         appendUInt32(value, numberOfBits: value.bitWidth)
     }
