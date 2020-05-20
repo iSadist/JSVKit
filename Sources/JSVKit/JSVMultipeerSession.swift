@@ -150,7 +150,18 @@ extension JSVMultipeerSession: MCSessionDelegate {
     
     public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {}
     
-    public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {}
+    public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
+        print("JSVKit - MultipeerSession:  Receiving resource")
+    }
     
-    public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {}
+    public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
+        guard let url = localURL else { return }
+
+        do {
+            let data = try Data(contentsOf: url, options: .mappedIfSafe)
+            receivedData(data, peerID)
+        } catch {
+            print("JSVKit - MultipeerSession: failed to open resource")
+        }
+    }
 }
