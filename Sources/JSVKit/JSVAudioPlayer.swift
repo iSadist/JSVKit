@@ -25,7 +25,11 @@ public struct JSVSounds {
 
 /// A protocol which allows a class to play a sound
 public protocol JSVPlayable {
-    func play(sound: JSVSounds.Name)
+    func play(sound: JSVSounds.Name) throws
+}
+
+enum JSVAudioPlayerError: Error {
+    case URL
 }
 
 /// An audio player that can play various sounds at the same time.
@@ -42,12 +46,12 @@ public class JSVAudioPlayer: NSObject, JSVPlayable {
     
     /// Play a sound from an audio file (m4a) that exists in the root of the project
     /// - Parameter sound: A sound value that has the same name as the audio file (without extension). This value should come from the JSVSounds.Name struct extension.
-    public func play(sound: JSVSounds.Name) {
+    public func play(sound: JSVSounds.Name) throws {
         var audioPlayer: AVAudioPlayer? = audio[sound.rawValue]
         
         if audioPlayer == nil {
             guard let url = Bundle.main.url(forResource: sound.rawValue, withExtension: "m4a") else {
-                fatalError("unable to create url")
+                throw JSVAudioPlayerError.URL
             }
             
             let player = try? AVAudioPlayer(contentsOf: url)
