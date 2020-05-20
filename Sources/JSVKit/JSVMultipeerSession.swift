@@ -51,6 +51,14 @@ public class JSVMultipeerSession: NSObject {
             }
         }
     }
+    
+    public func sendResource(_ data, withName name: String) {
+        if let connectedPeer = session.connectedPeers.first {
+            let fileName = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString)
+            try data.write(to: fileName)
+            session.sendResource(at: fileName, withName: name, toPeer: connectedPeer, withCompletionHandler: nil)
+        }
+    }
 
     public func startLooking() {
         serviceBrowser.startBrowsingForPeers()
