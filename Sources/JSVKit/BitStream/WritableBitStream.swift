@@ -8,11 +8,11 @@
 import Foundation
 import simd
 
-struct WritableBitStream {
-    var bytes = [UInt8]()
-    var endBitIndex = 0
+public struct WritableBitStream {
+    public var bytes = [UInt8]()
+    public var endBitIndex = 0
     
-    init() {}
+    public init() {}
     
     mutating private func appendBit(_ value: UInt8) {
         let bitShift = endBitIndex % 8
@@ -30,11 +30,11 @@ struct WritableBitStream {
         endBitIndex = bytes.count * 8
     }
     
-    mutating func appendUInt32(_ value: UInt32) {
+    mutating public func appendUInt32(_ value: UInt32) {
         appendUInt32(value, numberOfBits: value.bitWidth)
     }
 
-    mutating func appendUInt32(_ value: UInt32, numberOfBits: Int) {
+    mutating public func appendUInt32(_ value: UInt32, numberOfBits: Int) {
         var tempValue = value
         for _ in 0..<numberOfBits {
             appendBit(UInt8(tempValue & 1))
@@ -42,21 +42,21 @@ struct WritableBitStream {
         }
     }
     
-    mutating func appendEnum<T>(_ value: T) where T: CaseIterable & RawRepresentable, T.RawValue == UInt32 {
+    mutating public func appendEnum<T>(_ value: T) where T: CaseIterable & RawRepresentable, T.RawValue == UInt32 {
         appendUInt32(value.rawValue, numberOfBits: type(of: value).bits)
     }
 
-    mutating func appendFloat(_ value: Float) {
+    mutating public func appendFloat(_ value: Float) {
         appendUInt32(value.bitPattern)
     }
-    mutating func appendString(_ value: String) {
+    mutating public func appendString(_ value: String) {
         for char in value {
             bytes.append(char.asciiValue!)
             endBitIndex += 8
         }
     }
 
-    mutating func append(_ value: Data) {
+    mutating public func append(_ value: Data) {
         align()
         let length = UInt32(value.count)
         appendUInt32(length)
@@ -64,7 +64,7 @@ struct WritableBitStream {
         endBitIndex += Int(length * 8)
     }
     
-    func packData() -> Data {
+    public func packData() -> Data {
         let endBitIndex32 = UInt32(endBitIndex)
         let endBitIndexBytes = [UInt8(truncatingIfNeeded: endBitIndex32),
                                 UInt8(truncatingIfNeeded: endBitIndex32 >> 8),

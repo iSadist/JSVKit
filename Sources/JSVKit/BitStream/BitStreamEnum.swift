@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum BitStreamError: Error {
+public enum BitStreamError: Error {
     case tooShort
     case encodingError
 }

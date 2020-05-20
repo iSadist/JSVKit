@@ -7,12 +7,12 @@
 
 import Foundation
 
-typealias BitStreamCodable = BitStreamEncodable & BitStreamDecodable
+public typealias BitStreamCodable = BitStreamEncodable & BitStreamDecodable
 
-protocol BitStreamEncodable {
+public protocol BitStreamEncodable {
     func encode(to bitStream: inout WritableBitStream) throws
 }
 
-protocol BitStreamDecodable {
+public protocol BitStreamDecodable {
     init(from bitStream: inout ReadableBitStream) throws
 }

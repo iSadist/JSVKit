@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension RawRepresentable where Self: CaseIterable, RawValue == UInt32 {
+public extension RawRepresentable where Self: CaseIterable, RawValue == UInt32 {
     static var bits: Int {
         let casesCount = UInt32(allCases.count)
         return UInt32.bitWidth - casesCount.leadingZeroBitCount

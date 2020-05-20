@@ -1,6 +1,6 @@
 import Foundation
 
-protocol Copyable {
+public protocol Copyable {
     associatedtype CopyType
     func copy() -> CopyType
 }

@@ -8,13 +8,13 @@
 import Foundation
 import simd
 
-struct ReadableBitStream {
-    var bytes = [UInt8]()
-    var endBitIndex: Int
-    var currentBit = 0
-    var isAtEnd: Bool { return currentBit == endBitIndex }
+public struct ReadableBitStream {
+    public var bytes = [UInt8]()
+    public var endBitIndex: Int
+    public var currentBit = 0
+    public var isAtEnd: Bool { return currentBit == endBitIndex }
     
-    init(data: Data) {
+    public init(data: Data) {
         var bytes = [UInt8](data)
 
         if bytes.count < 4 {
@@ -32,14 +32,14 @@ struct ReadableBitStream {
     }
 
     // MARK: - Read
-    mutating func readBool() throws -> Bool {
+    mutating public func readBool() throws -> Bool {
         if currentBit >= endBitIndex {
             throw BitStreamError.tooShort
         }
         return (readBit() > 0) ? true : false
     }
 
-    mutating func readFloat() throws -> Float {
+    mutating public func readFloat() throws -> Float {
         var result: Float = 0.0
         do {
             result = try Float(bitPattern: readUInt32())
@@ -49,7 +49,7 @@ struct ReadableBitStream {
         return result
     }
 
-    mutating func readUInt32() throws -> UInt32 {
+    mutating public func readUInt32() throws -> UInt32 {
         var result: UInt32 = 0
         do {
             result = try readUInt32(numberOfBits: UInt32.bitWidth)
@@ -59,7 +59,7 @@ struct ReadableBitStream {
         return result
     }
 
-    mutating func readUInt32(numberOfBits: Int) throws -> UInt32 {
+    mutating public func readUInt32(numberOfBits: Int) throws -> UInt32 {
         if currentBit + numberOfBits > endBitIndex {
             throw BitStreamError.tooShort
         }
@@ -72,7 +72,7 @@ struct ReadableBitStream {
         return bitPattern
     }
 
-    mutating func readData() throws -> Data {
+    mutating public func readData() throws -> Data {
         align()
         let length = Int(try readUInt32())
         assert(currentBit % 8 == 0)
@@ -87,7 +87,7 @@ struct ReadableBitStream {
         return result
     }
 
-    mutating func readEnum<T>() throws -> T where T: CaseIterable & RawRepresentable, T.RawValue == UInt32 {
+    mutating public func readEnum<T>() throws -> T where T: CaseIterable & RawRepresentable, T.RawValue == UInt32 {
         let rawValue = try readUInt32(numberOfBits: T.bits)
         guard let result = T(rawValue: rawValue) else {
             throw BitStreamError.encodingError
