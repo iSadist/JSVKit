@@ -6,7 +6,7 @@ public class JSVMultipeerSession: NSObject {
     private var serviceAdvertiser: MCNearbyServiceAdvertiser
     
     public var isMaster = false
-    public var viewController: UIViewController?
+    public weak var viewController: UIViewController?
 
     private let connectedUserChanged: (MCPeerID?) -> Void
     private let receivedData: (Data, MCPeerID) -> Void
@@ -57,6 +57,16 @@ public class JSVMultipeerSession: NSObject {
             let fileName = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString)
             try data.write(to: fileName)
             session.sendResource(at: fileName, withName: name, toPeer: connectedPeer, withCompletionHandler: nil)
+        }
+    }
+    
+    public func startStream(with peer: MCPeerID) {
+        let stream = session.startStream(withName: "stream", toPeer: peer)
+
+        stream.open()
+        
+        if stream.hasSpaceAvailable {
+//            stream.write(<#T##buffer: UnsafePointer<UInt8>##UnsafePointer<UInt8>#>, maxLength: <#T##Int#>)
         }
     }
 
@@ -148,7 +158,8 @@ extension JSVMultipeerSession: MCSessionDelegate {
         receivedData(data, peerID)
     }
     
-    public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {}
+    public func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
+    }
     
     public func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
         print("JSVKit - MultipeerSession:  Receiving resource")
