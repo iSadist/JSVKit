@@ -61,13 +61,13 @@ public class JSVMultipeerSession: NSObject {
     }
     
     public func startStream(with peer: MCPeerID) {
-        let stream = session.startStream(withName: "stream", toPeer: peer)
-
-        stream.open()
-        
-        if stream.hasSpaceAvailable {
-//            stream.write(<#T##buffer: UnsafePointer<UInt8>##UnsafePointer<UInt8>#>, maxLength: <#T##Int#>)
-        }
+//        let stream = try? session.startStream(withName: "stream", toPeer: peer)
+//
+//        stream?.open()
+//        
+//        if stream?.hasSpaceAvailable ?? false {
+////            stream.write(<#T##buffer: UnsafePointer<UInt8>##UnsafePointer<UInt8>#>, maxLength: <#T##Int#>)
+//        }
     }
 
     public func startLooking() {
