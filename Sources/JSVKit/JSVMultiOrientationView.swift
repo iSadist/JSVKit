@@ -68,7 +68,7 @@ open class JSVMultiOrientaionView: UIView {
         case .landscapeLeft, .landscapeRight:
             NSLayoutConstraint.deactivate(pConstraints)
             NSLayoutConstraint.activate(lConstraints)
-        case .portrait, .portraitUpsideDown, .faceDown, .faceUp:
+        case .portrait, .portraitUpsideDown, .faceDown, .faceUp, .unknown:
             NSLayoutConstraint.deactivate(lConstraints)
             NSLayoutConstraint.activate(pConstraints)
         default:
