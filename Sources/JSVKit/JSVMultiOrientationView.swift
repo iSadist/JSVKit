@@ -16,9 +16,7 @@ open class JSVMultiOrientaionView: UIView {
             return lConstraints
         }
         set {
-            NSLayoutConstraint.deactivate(lConstraints)
             lConstraints = newValue
-            updateLayoutConstraints()
         }
     }
     /// The constraints that will be active in portrait mode
@@ -27,9 +25,7 @@ open class JSVMultiOrientaionView: UIView {
             return pConstraints
         }
         set {
-            NSLayoutConstraint.deactivate(pConstraints)
             pConstraints = newValue
-            updateLayoutConstraints()
         }
     }
     
@@ -66,12 +62,13 @@ open class JSVMultiOrientaionView: UIView {
     /// Make sure to call this method after the
     @objc open func updateLayoutConstraints() {
         let orientation = UIDevice.current.orientation
+        let idiom = UIDevice.current.userInterfaceIdiom
 
         switch orientation {
         case .landscapeLeft, .landscapeRight:
             NSLayoutConstraint.deactivate(pConstraints)
             NSLayoutConstraint.activate(lConstraints)
-        case .portrait, .portraitUpsideDown:
+        case .portrait, .portraitUpsideDown, .faceDown, .faceUp:
             NSLayoutConstraint.deactivate(lConstraints)
             NSLayoutConstraint.activate(pConstraints)
         default:
