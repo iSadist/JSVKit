@@ -17,6 +17,8 @@ open class JSVMultiOrientaionView: UIView {
         }
         set {
             lConstraints = newValue
+            NSLayoutConstraint.deactivate(pConstraints)
+            NSLayoutConstraint.activate(lConstraints)
         }
     }
     /// The constraints that will be active in portrait mode
@@ -26,6 +28,8 @@ open class JSVMultiOrientaionView: UIView {
         }
         set {
             pConstraints = newValue
+            NSLayoutConstraint.deactivate(lConstraints)
+            NSLayoutConstraint.activate(pConstraints)
         }
     }
     
