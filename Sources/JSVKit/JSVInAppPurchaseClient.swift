@@ -15,7 +15,8 @@ public class JSVInAppPurchaseClient: NSObject, Purchasing {
     public var products: [SKProduct]
     public var purchasedProducts: [SKProduct]
 
-    public var paymentCallback: (([SKProduct], Bool) -> Void)?
+    public var paymentCallback: (([SKProduct], Error?) -> Void)?
+    public var restoreCallback: (Bool -> Void)?
     public var productsCallback: (([SKProduct]) -> Void)?
 
     override public init() {
@@ -48,7 +49,7 @@ public class JSVInAppPurchaseClient: NSObject, Purchasing {
             let payment = SKPayment(product: product)
             paymentQueue.add(payment)
         } else {
-            paymentCallback?(purchasedProducts, false)
+            paymentCallback?(purchasedProducts, nil)
         }
     }
     
@@ -107,18 +108,31 @@ extension JSVInAppPurchaseClient: SKPaymentTransactionObserver {
             if let product = (products.first { (prod) -> Bool in
                 prod.productIdentifier == transaction.payment.productIdentifier
             }) {
-                purchasedProducts.append(product)
-
                 DispatchQueue.main.async {
-                    self.paymentCallback?(self.purchasedProducts, false)
+                    purchasedProducts.append(product)
+                    self.paymentCallback?(self.purchasedProducts, transaction.error)
                 }
             }
         }
         
         for transaction in transactions where transaction.transactionState == .failed {
             DispatchQueue.main.async {
-                self.paymentCallback?(self.purchasedProducts, true)
+                self.paymentCallback?(self.purchasedProducts, transaction.error)
             }
         }
+    }
+    
+    public func paymentQueue(_ queue: SKPaymentQueue, removedTransactions transactions: [SKPaymentTransaction]) {
+        for transaction in transactions {
+            self.paymentCallback?(self.purchasedProducts, transaction.error)
+        }
+    }
+    
+    public func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
+        self.restoreCallback?(false)
+    }
+    
+    public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        self.restoreCallback?(true)
     }
 }
