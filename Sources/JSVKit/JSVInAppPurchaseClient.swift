@@ -16,7 +16,7 @@ public class JSVInAppPurchaseClient: NSObject, Purchasing {
     public var purchasedProducts: [SKProduct]
 
     public var paymentCallback: (([SKProduct], Error?) -> Void)?
-    public var restoreCallback: (Bool -> Void)?
+    public var restoreCallback: ((Bool) -> Void)?
     public var productsCallback: (([SKProduct]) -> Void)?
 
     override public init() {
@@ -108,8 +108,9 @@ extension JSVInAppPurchaseClient: SKPaymentTransactionObserver {
             if let product = (products.first { (prod) -> Bool in
                 prod.productIdentifier == transaction.payment.productIdentifier
             }) {
-                DispatchQueue.main.async {
-                    purchasedProducts.append(product)
+                DispatchQueue.main.async { [weak self] in
+                    guard let `self` = self else { return }
+                    self.purchasedProducts.append(product)
                     self.paymentCallback?(self.purchasedProducts, transaction.error)
                 }
             }
