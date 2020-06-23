@@ -26,6 +26,7 @@ public class JSVTextTableViewCell: UITableViewCell, UITextFieldDelegate {
     fileprivate func setupSubviews() {
         textField.delegate = self
         textField.clearButtonMode = .whileEditing
+        textField.textAlignment = .right
 
         addSubview(title)
         addSubview(textField)
@@ -38,6 +39,7 @@ public class JSVTextTableViewCell: UITableViewCell, UITextFieldDelegate {
             title.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 15),
             textField.leftAnchor.constraint(equalTo: title.rightAnchor, constant: 25),
             textField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -25),
+            title.widthAnchor.constraint(lessThanOrEqualTo: textField.widthAnchor),
             textField.centerYAnchor.constraint(equalTo: centerYAnchor)
             ])
     }
