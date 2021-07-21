@@ -51,6 +51,7 @@ public class Observable<ObservedType> {
     /// - Parameter newValue: The new value that the observable will get.
     public func bindingChanged(to newValue: ObservedType) {
         _value = newValue
+        notifyListeners(newValue: newValue)
     }
     
     /// Notifies all the registered listeners of the new value
