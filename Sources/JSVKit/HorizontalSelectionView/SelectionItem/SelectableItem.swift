@@ -68,17 +68,18 @@ open class SelectableItem: UIView {
     }
 
     fileprivate func initWithNib() {
-        let resourceBundlePath = Bundle.main.path(forResource: "JSVKit", ofType: "framework")!
-        let bundle = Bundle(path: resourceBundlePath)
-        bundle?.load()
+//        Bundle(for: Self)
+//        let resourceBundlePath = Bundle.main.path(forResource: "JSVKit", ofType: "framework")!
+        let bundle = Bundle(for: Self.self)
+        bundle.load()
 
-        if bundle?.isLoaded ?? false {
-            print("Loaded bundle with path \(resourceBundlePath)")
+        if bundle.isLoaded ?? false {
+            print("Loaded bundle with path \(bundle.bundlePath)")
         } else {
-            print("Failed to load bundle with path \(resourceBundlePath)")
+            print("Failed to load bundle with path \(bundle.bundlePath)")
         }
 
-        bundle?.loadNibNamed("SelectableItem", owner: self, options: nil)
+        bundle.loadNibNamed("SelectableItem", owner: self, options: nil)
         contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(contentView)
