@@ -21,6 +21,10 @@ open class SelectableItem: UIView {
     public var selectedColor: UIColor? = UIColor(named: "SelectedBlue")
     /// The color when not selected
     public var deselectedColor: UIColor? = UIColor(named: "TintedBackground")
+    /// The text label color
+    public var textColor: UIColor? = .label
+    /// The text label color for a disabled item
+    public var disabledTextColor: UIColor? = .secondaryLabel
 
     /// An index representing which place in the selection view the item has
     public var index: Int = 0
@@ -50,9 +54,9 @@ open class SelectableItem: UIView {
     private var disabled: Bool = false {
         didSet {
             if disabled {
-                label.textColor = UIColor(named: "DarkerText")
+                label.textColor = disabledTextColor
             } else {
-                label.textColor = UIColor(named: "DefaultText")
+                label.textColor = textColor
             }
         }
     }
@@ -94,5 +98,10 @@ open class SelectableItem: UIView {
     public func setDisabled(_ disable: Bool) {
         disabled = disable
         selected = disable ? false : selected
+    }
+    
+    public func update() {
+        roundedRect.backgroundColor = selected ? selectedColor : deselectedColor
+        label.textColor = disabled ? disabledTextColor : textColor
     }
 }
