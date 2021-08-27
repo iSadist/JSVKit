@@ -22,9 +22,9 @@ open class SelectableItem: UIView {
     /// The color when not selected
     public var deselectedColor: UIColor? = UIColor(named: "TintedBackground")
     /// The text label color
-    public var textColor: UIColor? = .label
+    public var textColor: UIColor? = .white
     /// The text label color for a disabled item
-    public var disabledTextColor: UIColor? = .secondaryLabel
+    public var disabledTextColor: UIColor? = .gray
 
     /// An index representing which place in the selection view the item has
     public var index: Int = 0
