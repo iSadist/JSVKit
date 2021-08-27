@@ -68,7 +68,11 @@ open class SelectableItem: UIView {
     }
 
     fileprivate func initWithNib() {
-        Bundle.main.loadNibNamed("SelectableItem", owner: self, options: nil)
+        let bundle = Bundle(for: type(of: self))
+//        let nib = UINib(nibName: "SelectableItem", bundle: bundle)
+        bundle.loadNibNamed("SelectableItem", owner: self, options: nil)
+
+//        Bundle.main.loadNibNamed("SelectableItem", owner: self, options: nil)
         contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         addSubview(contentView)
