@@ -66,7 +66,7 @@ open class JSVMultiOrientaionView: UIView {
     /// Make sure to call this method after the
     @objc open func updateLayoutConstraints() {
         let orientation = UIDevice.current.orientation
-        let idiom = UIDevice.current.userInterfaceIdiom
+        _ = UIDevice.current.userInterfaceIdiom
 
         switch orientation {
         case .landscapeLeft, .landscapeRight:

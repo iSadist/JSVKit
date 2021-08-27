@@ -9,7 +9,7 @@ import Foundation
 
 infix operator **
 public extension Float {
-    public static func ** (left: Float, right: Float) -> Float {
+    static func ** (left: Float, right: Float) -> Float {
         return pow(left, right)
     }
 }
