@@ -23,9 +23,9 @@ import UIKit
     /// The color of the item when it is not selected
     @IBInspectable public var deselectedColor: UIColor? = UIColor(named: "TintedBackground")
     /// The text label color
-    public var textColor: UIColor? = .label
+    @IBInspectable public var textColor: UIColor? = .label
     /// The text label color for a disabled item
-    public var disabledTextColor: UIColor? = .secondaryLabel
+    @IBInspectable public var disabledTextColor: UIColor? = .secondaryLabel
     /// A flag for setting the selectable items to perfect circles
     @IBInspectable public var isItemCircle: Bool = false
     /// If true, the item width will be dynamic to the text. Otherwise itemWidth will be used
