@@ -39,9 +39,9 @@ open class SelectableItem: UIView {
     private var selected: Bool = false {
         didSet {
             if selected {
-//                roundedRect.backgroundColor = selectedColor
+                roundedRect.backgroundColor = selectedColor
             } else {
-//                roundedRect.backgroundColor = deselectedColor
+                roundedRect.backgroundColor = deselectedColor
             }
         }
     }

@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -31,7 +30,6 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" systemColor="systemPinkColor"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="Ac3-gn-Gzt" secondAttribute="trailing" id="NHY-EV-OKe"/>
                         <constraint firstItem="Ac3-gn-Gzt" firstAttribute="centerY" secondItem="t9v-vp-LWD" secondAttribute="centerY" id="fUI-Us-3oc"/>
@@ -48,7 +46,7 @@
                 </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="t9v-vp-LWD" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.75" id="2yt-ZA-5uh"/>
                 <constraint firstItem="t9v-vp-LWD" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="SQZ-4G-69Y"/>
@@ -59,9 +57,4 @@
             <point key="canvasLocation" x="47.10144927536232" y="-119.86607142857142"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemPinkColor">
-            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-    </resources>
 </document>
