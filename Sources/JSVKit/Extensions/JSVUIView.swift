@@ -67,7 +67,7 @@ extension UIView {
 extension UIView {
     /// Converts the view to an image. Similar to taking a screenshot.
     /// - Returns: An image representation of the view
-    func convertToImage() -> UIImage? {
+    public func convertToImage() -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(bounds.size, isOpaque, 0.0)
         defer { UIGraphicsEndImageContext() }
         drawHierarchy(in: bounds, afterScreenUpdates: true)

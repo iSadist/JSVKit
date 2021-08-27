@@ -1,6 +1,5 @@
 //
 //  UILabel+extension.swift
-//  BucketBuddy
 //
 //  Created by Jan Svensson on 2021-04-06.
 //

@@ -1,6 +1,5 @@
 //
 //  UINavigationController+extension.swift
-//  BucketBuddy
 //
 //  Created by Jan Svensson on 2021-08-10.
 //
@@ -8,11 +7,11 @@
 import UIKit
 
 extension UINavigationController {
-    /// <#Description#>
+    /// Same as pushViewController but with a copmletion handler
     /// - Parameters:
-    ///   - viewController: <#viewController description#>
-    ///   - animated: <#animated description#>
-    ///   - completion: <#completion description#>
+    ///   - viewController: the view controller to push
+    ///   - animated: flag for animation
+    ///   - completion: the completion handler
     public func pushViewController(
             _ viewController: UIViewController,
             animated: Bool,

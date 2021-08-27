@@ -9,7 +9,7 @@ import UIKit
 
 extension UIColor {
     /// The RGBA components of the color
-    var components: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+    public var components: (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
@@ -18,12 +18,12 @@ extension UIColor {
 
         return (red, green, blue, alpha)
     }
-    
-    /// <#Description#>
+
+    /// Converts a color on HEX format to UIColor
     /// - Parameters:
-    ///   - hexString: <#hexString description#>
-    ///   - alpha: <#alpha description#>
-    /// - Returns: <#description#>
+    ///   - hexString: The hex string
+    ///   - alpha: the alpha value
+    /// - Returns: the corresponding color as UIColor
     public static func colorWithHexString(hexString: String, alpha:CGFloat = 1.0) -> UIColor {
         // Convert hex string to an integer
         let hexint = Int(Self.intFromHexString(hexStr: hexString))
