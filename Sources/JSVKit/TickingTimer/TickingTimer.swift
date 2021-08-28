@@ -15,7 +15,7 @@ open class TickingTimer: UIView {
     @IBOutlet weak private var separatorLabel: UILabel!
     @IBOutlet weak var secondsBackground: UIView!
     @IBOutlet weak var minutesBackground: UIView!
-    private(set) var seconds: Int = 0
+    public private(set) var seconds: Int = 0
     fileprivate var timer: Timer?
     fileprivate var startTimestamp: CFTimeInterval?
 
