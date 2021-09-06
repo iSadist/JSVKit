@@ -12,7 +12,7 @@ import UIKit
 @IBDesignable public class HSelectionView: UIView {
     private var scrollView: UIScrollView?
     private var stackView: UIStackView?
-    private var items: [SelectableItem] = []
+    public private(set) var items: [SelectableItem] = []
 
     /// The width of an item
     @IBInspectable public var itemWidth: CGFloat = 110.0
