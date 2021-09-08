@@ -50,6 +50,28 @@ import UIKit
         super.init(coder: coder)
     }
 
+    /// <#Description#>
+    public var changeClosure: (() -> Void)?
+
+    /// <#Description#>
+    /// - Parameter observable: <#observable description#>
+    public func bind(to observable: Observable<Int>) {
+        changeClosure = { [weak self] in
+            observable.bindingChanged(to: self?.selectedItemIndex ?? 0)
+        }
+
+        observable.valueChanged = { [weak self] newValue in
+            if let index = newValue {
+                self?.selectedItemIndex = index
+            }
+        }
+    }
+
+    /// <#Description#>
+    public func unbind() {
+        changeClosure = nil
+    }
+
     /// Set up the view with the items in the string array.
     /// - Parameter arr: The array of possible selections
     public func setup(_ arr: [String]) {
@@ -131,6 +153,7 @@ import UIKit
             let isSelected = $0.offset == selectedItemIndex
             $0.element.setSelected(isSelected)
         }
+        changeClosure?()
     }
 
     /// Called when a tap gesture occurs
