@@ -111,7 +111,7 @@ import UIKit
 
         let widthScrollSize: CGFloat = useDynamicItemWidth ?
             totalViewWidth :
-            CGFloat(arr.count) * (itemWidth + spacing)
+            CGFloat(arr.count) * itemWidth
 
         scrollView = UIScrollView()
         scrollView?.frame = bounds
