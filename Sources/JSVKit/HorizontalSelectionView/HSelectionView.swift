@@ -9,7 +9,7 @@ import UIKit
 
 /// A horizontal selection view where an item can be picked out of many
 @available(iOS 11.0, *)
-@IBDesignable public class HSelectionView: UIView {
+@IBDesignable public class HSelectionView: UIView, BoundComponent {
     private var scrollView: UIScrollView?
     private var stackView: UIStackView?
     public private(set) var items: [SelectableItem] = []
@@ -30,6 +30,8 @@ import UIKit
     @IBInspectable public var isItemCircle: Bool = false
     /// If true, the item width will be dynamic to the text. Otherwise itemWidth will be used
     @IBInspectable public var useDynamicItemWidth: Bool = false
+    /// The spacing between the items
+    @IBInspectable public var spacing: CGFloat = 0.0
 
     /// The index of the item that is selected
     public var selectedItemIndex: Int = 0 {
@@ -109,7 +111,7 @@ import UIKit
 
         let widthScrollSize: CGFloat = useDynamicItemWidth ?
             totalViewWidth :
-            CGFloat(arr.count) * (itemWidth + 7)
+            CGFloat(arr.count) * (itemWidth + spacing)
 
         scrollView = UIScrollView()
         scrollView?.frame = bounds
@@ -122,6 +124,7 @@ import UIKit
         stackView?.axis = .horizontal
         stackView?.alignment = .fill
         stackView?.distribution = useDynamicItemWidth ? .fillProportionally : .fillEqually
+        stackView?.spacing = spacing
         stackView?.frame = CGRect(x: 0, y: 0, width: widthScrollSize, height: bounds.height)
         stackView?.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         stackView?.isUserInteractionEnabled = true

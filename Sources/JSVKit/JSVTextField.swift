@@ -1,7 +1,7 @@
 import UIKit
 
 /// A text field component that can be bound to an observable
-public class JSVTextField: UITextField {
+public class JSVTextField: UITextField, BoundComponent {
     public var changeClosure: (() -> Void)?
     
     @objc public func valueChanged() {

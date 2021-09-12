@@ -1,7 +1,7 @@
 import UIKit
 
 /// A UIStepper component that can be bound to an Observable
-public class BoundUIStepper: UIStepper {
+public class BoundUIStepper: UIStepper, BoundComponent {
     public var changeClosure: (() -> Void)?
 
     @objc func valueChanged() {

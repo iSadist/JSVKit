@@ -1,7 +1,7 @@
 import UIKit
 
 /// A UISlider that can be connected to an Observable
-public class BoundUISlider: UISlider {
+public class BoundUISlider: UISlider, BoundComponent {
     public var changeClosure: (() -> Void)?
 
     @objc func valueChanged() {

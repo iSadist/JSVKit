@@ -1,7 +1,9 @@
 import Foundation
 
 /// A button that can be connected to an observable
-public class BoundJSVButton: JSVButton {
+public class BoundJSVButton: JSVButton, BoundComponent {
+    public var changeClosure: (() -> Void)?
+
     /// Connect the button component to an observable so that the value of the observable will correspond to the state of the button
     ///
     /// - Parameter observable: The observable to bind to the component

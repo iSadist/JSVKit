@@ -1,6 +1,6 @@
 import UIKit
 
-final public class BoundUISegmentedControl: UISegmentedControl {
+final public class BoundUISegmentedControl: UISegmentedControl, BoundComponent {
     public var changeClosure: (() -> Void)?
 
     @objc func valueChanged() {

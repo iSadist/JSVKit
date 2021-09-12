@@ -1,7 +1,8 @@
 import UIKit
 
 /// A UILabel that can be connected to an observable
-public class BoundUILabel: UILabel {
+public class BoundUILabel: UILabel, BoundComponent {
+    typealias BoundType = String
     public var changeClosure: (() -> Void)?
 
     @objc public func valueChanged() {

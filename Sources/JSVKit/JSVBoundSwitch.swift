@@ -1,7 +1,7 @@
 import UIKit
 
 /// A switch component that can be bound to an observable
-public class JSVBoundSwitch: UISwitch {
+public class JSVBoundSwitch: UISwitch, BoundComponent {
     public var changeClosure: (() -> Void)?
     
     @objc private func valueChanged() {
