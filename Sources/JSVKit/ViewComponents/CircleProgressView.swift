@@ -50,6 +50,7 @@ public class CircleProgressView: UIView {
 
     override public func draw(_ rect: CGRect) {
         defer {
+            removeSublayers()
             addSublayers()
             addAnimations()
         }
@@ -108,6 +109,12 @@ public class CircleProgressView: UIView {
         layer.addSublayer(backgroundLayer)
         layer.addSublayer(circleLayer)
         layer.addSublayer(progressLayer)
+    }
+
+    private func removeSublayers() {
+        backgroundLayer.removeFromSuperlayer()
+        circleLayer.removeFromSuperlayer()
+        progressLayer.removeFromSuperlayer()
     }
 
     private func addAnimations() {
