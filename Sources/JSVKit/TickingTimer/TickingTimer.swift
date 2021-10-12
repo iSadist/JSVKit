@@ -17,7 +17,7 @@ open class TickingTimer: UIView {
     @IBOutlet weak var minutesBackground: UIView!
     public private(set) var seconds: Int = 0
     fileprivate var timer: Timer?
-    fileprivate var startTimestamp: CFTimeInterval?
+    fileprivate var startTimestamp: Date?
 
     @IBInspectable
     public var color: UIColor = .black
@@ -55,9 +55,9 @@ open class TickingTimer: UIView {
     /// Starts the timer
     public func start() {
         if startTimestamp != nil {
-            startTimestamp = CACurrentMediaTime() - Double(self.seconds)
+            startTimestamp = Date().addingTimeInterval(-Double(self.seconds))
         } else {
-            startTimestamp = CACurrentMediaTime()
+            startTimestamp = Date()
         }
 
         timer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true) { [weak self] _ in
@@ -67,8 +67,8 @@ open class TickingTimer: UIView {
                 return
             }
 
-            let currentTimestamp = CACurrentMediaTime()
-            let diff = currentTimestamp - startTimestamp
+            let currentTimestamp = Date()
+            let diff = currentTimestamp.timeIntervalSince(startTimestamp)
 
             if Int(diff) > self.seconds {
                 self.seconds = Int(diff)
