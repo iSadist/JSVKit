@@ -1,8 +1,8 @@
 import MultipeerConnectivity
 
 public class JSVMultipeerSession: NSObject {
-    private(set) var session: MCSession
-    private(set) var serviceBrowser: MCNearbyServiceBrowser
+    public private(set) var session: MCSession
+    public private(set) var serviceBrowser: MCNearbyServiceBrowser
     private var serviceAdvertiser: MCNearbyServiceAdvertiser
     
     public var isMaster = false
