@@ -1,7 +1,7 @@
 import MultipeerConnectivity
 
 public class JSVMultipeerSession: NSObject {
-    private var session: MCSession
+    private(set) var session: MCSession
     private var serviceBrowser: MCNearbyServiceBrowser
     private var serviceAdvertiser: MCNearbyServiceAdvertiser
     
